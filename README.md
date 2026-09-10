@@ -1,36 +1,118 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Airbnb UI Clone with AI
 
-## Getting Started
+Clon frontend inspirado en Airbnb, desarrollado con Next.js 16, React, TypeScript y Tailwind CSS.
 
-First, run the development server:
+El proyecto reproduce tres vistas principales:
+
+- Home `/`
+- Catálogo `/catalog`
+- Detalle de alojamiento `/rooms/[id]`
+
+La implementación sigue un enfoque mobile-first, comenzando en 375px y adaptándose a escritorio desde 768px.
+
+## Tecnologías
+
+- Next.js 16
+- React
+- TypeScript
+- Tailwind CSS
+- App Router
+
+## Funcionalidades principales
+
+### Home
+
+- Búsqueda de alojamientos en tiempo real.
+- Filtro por categoría.
+- Carga simulada con `useEffect` y `setTimeout`.
+- Carrusel horizontal en móvil.
+- Reutilización de `ListingCard`.
+
+### Catálogo
+
+- Listado de alojamientos.
+- Ordenación por precio ascendente y descendente.
+- Reutilización de `ListingCard`.
+- Placeholder visual de mapa.
+- Layout responsive con resultados y mapa en escritorio.
+
+### Detalle de alojamiento
+
+- Ruta dinámica mediante `/rooms/[id]`.
+- Carga simulada de datos.
+- Galería de imágenes con navegación anterior y siguiente.
+- Información del anfitrión.
+- Amenities.
+- Tarjeta de reserva.
+- Contador de huéspedes con límites mínimos y máximos.
+
+## Arquitectura
+
+```text
+app/
+├── page.tsx
+├── catalog/
+│   └── page.tsx
+└── rooms/
+    └── [id]/
+        └── page.tsx
+
+components/
+data/
+types/
+references/
+context.md
+```
+
+Los componentes reutilizables viven dentro de `/components`.
+
+Los tipos principales de TypeScript se encuentran en `/types`.
+
+Los datos simulados utilizados por las tres vistas se encuentran en `/data`.
+
+Las capturas utilizadas como referencia visual se encuentran en `/references`.
+
+## Contexto y especificaciones
+
+El archivo [`context.md`](./context.md) contiene:
+
+- descripción de las tres vistas;
+- usuario objetivo;
+- componentes principales;
+- decisiones responsive;
+- especificaciones de componentes derivadas de las capturas de Airbnb.
+
+## Instalación
+
+Instala las dependencias:
+
+```bash
+npm install
+```
+
+Inicia el servidor de desarrollo:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Abre:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```text
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Validación
 
-## Learn More
+El proyecto ha sido comprobado con:
 
-To learn more about Next.js, take a look at the following resources:
+```bash
+npm run lint
+npm run build
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Notas
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+El mapa real y el date picker no se implementaron porque forman parte de los retos opcionales de la práctica.
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+No se utilizaron librerías de componentes preconstruidos; los estilos están realizados con Tailwind CSS.
